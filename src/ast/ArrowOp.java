@@ -3,7 +3,7 @@ package ast;
 public class ArrowOp implements BinOp {
 
 	/**
-	 * Implicatie klasse a -> b = not(a \/ b)
+	 * Implicatie klasse a -> b = not a \/ b
 	 */
 
 	@Override
