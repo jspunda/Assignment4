@@ -1,6 +1,6 @@
 package parsing;
 /*
-Knallen
+Knallen met ballen
 */
 import java.io.StringReader;
 
