@@ -8,6 +8,7 @@ import ast.*;
  * @author Sjaak Smetsers
  * @author Laurens van den Bercken, s4057384 
  * @author Jeftha Spunda, s4174615
+ * boolean left geeft aan of expressie links of rechts van : (turnstile) is
  */
 public class RDparser {
 	private Tokenizer tokens;

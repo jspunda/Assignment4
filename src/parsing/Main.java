@@ -1,12 +1,11 @@
 package parsing;
-/*
-Knallen met ballen
-*/
+
 import java.io.StringReader;
 import ast.*;
 
 /**
- * Main. Roept testparser aan en parseert test_tekst
+ * Main. Split invoer op : (turnstile)
+ * parseert links van : en parseert rechts van : en vervolgens het resultaat van beide met turnstile
  * Support op het moment nog geen afhandeling van haakjes.
  * @author Sjaak Smetsers
  * @author Laurens van den Bercken, s4057384 
