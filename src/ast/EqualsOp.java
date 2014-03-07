@@ -1,10 +1,9 @@
 package ast;
 
-public class DArrowOp implements BinOp{
-	
+public class EqualsOp implements BinOp {
+
 	@Override
 	public boolean eval(boolean lo, boolean ro) {
-		return !(lo ^ ro);
+		return lo == ro;
 	}
-
 }

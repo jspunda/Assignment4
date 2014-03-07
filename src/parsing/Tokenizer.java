@@ -71,8 +71,8 @@ public class Tokenizer
         }
 	}
 	
-	public int getVarToken() {
-		return varToken;
+	public boolean getVarToken() {
+		return (char) varToken == '1';
 	}
 	
 	private void scan () throws IOException, ParseError {
@@ -102,14 +102,24 @@ public class Tokenizer
             		  currentToken = Token.NotToken;
             		  break;
             default:
-                if ( Character.isLetter((char) currentChar)) {
+                if ( is01((char) currentChar)) {
                     varToken = currentChar;
                     currentChar = input.read();
                 	currentToken = Token.VarToken;
                 }
-                else
-                    throw new ParseError ( "Illegal input character: " + ((char) currentChar));
+                else {
+                	
+                	throw new ParseError ( "Illegal input character: " + ((char) currentChar));
+                }
 			}
 		}
+	}
+	
+	private boolean is01(char currentchar) {
+		if (currentchar == '1' || currentchar == '0' ) {
+			return true;
+		}
+		else
+			return false;
 	}
 }

@@ -7,5 +7,5 @@ package ast;
  * @version 1.1 -- 02-03-2013
  */
 public interface BinOp {
-	int eval (int lo, int ro);
+	boolean eval (boolean lo, boolean ro);
 }

@@ -29,7 +29,7 @@ public class PriorityDetermine {
 	 */
 	private void prepareInput() {
 		for(int i =0; i < input.length(); i++) {
-			if(Character.isLetter(input.charAt(i))) {
+			if(Character.isDigit(input.charAt(i))) {
 				input = input.replace(""+input.charAt(i)," ");
 			}
 		}
@@ -68,7 +68,10 @@ public class PriorityDetermine {
 				case '<':
 					priority[i] = false;
 					break;
-				default:
+				case ',':
+					priority[i] = false;
+					break;
+				default: 
 					throw new ParseError ( "Illegal input character: " + ((char) input.charAt(i)));
 				}
 			}	

@@ -14,7 +14,7 @@ public class UnOpExp extends Exp{
 		this.o = o;
 	}
 	
-	public int eval() {
+	public boolean eval() {
 		return op.eval(o.eval());
 	}
 }

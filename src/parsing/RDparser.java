@@ -18,10 +18,12 @@ public class RDparser {
 	 */
 	private boolean [] priority;
 	private int counter;
+	private boolean left;
 	
-    public RDparser ( Reader input, String s) throws ParseError {
+    public RDparser ( Reader input, String s, boolean left) throws ParseError {
     	tokens = new Tokenizer( input );
 		counter = 0;
+		this.left = left;
 		/*
 		 * Creeert nieuwe prioriteiten array adhv String s
 		 */
@@ -49,8 +51,11 @@ public class RDparser {
         				 return new OrOp();
         case AndToken:	 tokens.nextToken();
 		 				return new AndOp();
-        case CommaToken: tokens.nextToken(); //Comma fungeert links als And met de zwakste binding
-        				return new AndOp();
+        case CommaToken: tokens.nextToken();
+        				 if (left)
+        					 return new AndOp();
+        				 else
+        					 return new OrOp();
         default:         return null;
 		}
 	}
@@ -78,7 +83,7 @@ public class RDparser {
 
 	private Exp parseFact ( ) throws ParseError {
         if ( tokens.currentToken().equals(Tokenizer.Token.VarToken) ) {
-        	VarExp v = new VarExp((char)tokens.getVarToken());
+        	VarExp v = new VarExp(tokens.getVarToken());
             tokens.nextToken ( );
             return v;
 		}

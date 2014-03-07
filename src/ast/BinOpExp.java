@@ -15,7 +15,7 @@ public class BinOpExp extends Exp {
 		this.op = op;
 	}
 
-	public int eval () {
+	public boolean eval () {
 		return op.eval(lo.eval(),ro.eval());
 	}
 

@@ -2,13 +2,13 @@ package ast;
 
 public class VarExp extends Exp {
 
-	private char c;
+	private boolean c;
 	
-	public VarExp (char c) {
+	public VarExp (boolean c) {
 		this.c = c;
 	}
 
-	public int eval() {
+	public boolean eval() {
 		return c;
 	}
 	

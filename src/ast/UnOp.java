@@ -1,5 +1,5 @@
 package ast;
 
 public interface UnOp {
-	int eval(int o);
+	boolean eval(boolean o);
 }

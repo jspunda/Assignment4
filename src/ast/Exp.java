@@ -6,5 +6,5 @@ package ast;
  * @version 1.1 -- 02-03-2013
  */
 public abstract class Exp {
-	public abstract int eval ();
+	public abstract boolean eval ();
 }

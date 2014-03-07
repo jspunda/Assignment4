@@ -3,6 +3,7 @@ package parsing;
 Knallen met ballen
 */
 import java.io.StringReader;
+import ast.*;
 
 /**
  * Main. Roept testparser aan en parseert test_tekst
@@ -13,7 +14,7 @@ import java.io.StringReader;
  */
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args){
 		TestParser ();
     }
 
@@ -24,21 +25,28 @@ public class Main {
 		 * Implicatie = >
 		 * Dubbele implicatie = <>
 		 * Not = ~
-		 * Vars = a t/m z (upper en lower case)
+		 * Vars = 1 of 0
+		 * turnstile = : 
 		 */
 		
-		String test_tekst = "a > b"; //Voer hier input in.
-
+		String test_tekst = "1, 1 | 0 : 0 & 1"; //Voer hier input in.
+		
+		String strings [] = test_tekst.split(":");
 		try {
-			StringReader input = new StringReader(test_tekst);
-			RDparser parser = new RDparser (input, test_tekst);
-
-			parser.parse();
-			
+			if (strings.length != 2)
+				throw new ParseError("Not a valid expression.");
+		} catch (ParseError parseError) {
+			System.out.println(parseError);
+			return;
+		}
+		
+		try {
+			Exp e = new BinOpExp (new RDparser(new StringReader (strings[0].toString()), strings[0], true).parse(),
+								  new RDparser(new StringReader (strings[1].toString()), strings[1], false).parse(),
+								  new EqualsOp());
 			System.out.println("Correcte input");
-			//System.out.printf ("Result: %d\n", e.eval());
-
-
+			System.out.println (e.eval());
+			
 		} catch (ParseError parseError) {
 			System.out.println(parseError);
 		}
