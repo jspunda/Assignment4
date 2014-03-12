@@ -4,6 +4,7 @@ public class AndOp implements BinOp {
 
 	/**
 	 * And klasse
+	 * GitHub works great!
 	 */	
 
 	@Override
